@@ -10,6 +10,8 @@ Why Java is Platform Independent?
 	3.The JVM runs the bytecode, and the JVM is customized for each operating system.
 	4.This is what makes Java programs run anywhere, as long as the platform has the correct JVM installed.
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 OOP's:
 ------
 What is Java Class?
@@ -28,7 +30,7 @@ What the Four Main Pillars of OOP in Java?
 	3.polymorphism
 	4.Abstraction
 
-Encapsulation:
+1.Encapsulation:
 --------------
 	1.Encapsulation is the one of the fundametal feature of Object-Oriented Programming.
 	2.Wrapping Data and metthods to geather as a single unit.
@@ -240,3 +242,206 @@ Encapsulation:
 					System.out.println("Meow");
 				}
 			}
+			
+			
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+1.Constructor:
+--------------
+	1.In Java Constructor is a Special type of method.
+	2.name of Constructor is same as name of the class without any return type.
+	3.constructor is used to instantiate instance variables.
+	4.constructor of class is called automatically whenever object of a class is created
+	5. A class can have multiple constructors
+	Example:
+	--------
+		public class Car {
+			String model;
+			int year;
+
+			// Constructor
+			public Car(String m, int y) {
+				model = m;
+				year = y;
+			}
+
+			void displayInfo() {
+				System.out.println(model + " - " + year);
+			}
+		}
+
+		// Main class
+		public class Main {
+			public static void main(String[] args) {
+				Car myCar = new Car("Toyota", 2022);  // Constructor is called here
+				myCar.displayInfo();  // Output: Toyota - 2022
+			}
+		}
+	6.Types of Constructor
+		a. Default constructor:
+			1.provided by java if no other constructor is created
+			2. it will not have any parameters
+			Example:
+			--------
+				public class Bike {
+					Bike() {
+						System.out.println("Bike created");
+					}
+				}
+				
+		b.Parameterized Constructor:Accepts arguments to initialize values
+		Example:
+		--------
+				public class Car {
+					String model;
+					int year;
+
+					// Constructor
+					public Car(String m, int y) {
+						model = m;
+						year = y;
+					}
+
+					void displayInfo() {
+						System.out.println(model + " - " + year);
+					}
+				}
+
+				// Main class
+				public class Main {
+					public static void main(String[] args) {
+						Car myCar = new Car("Toyota", 2022);  // Constructor is called here
+						myCar.displayInfo();  // Output: Toyota - 2022
+					}
+				}
+2.Constructor chaining:
+-----------------------
+	1.calling one constructor from the another constructor of the same class or from a super class is known as constructor chaining.
+	2.There are two types:
+		a.Within the same class – using this(...)
+		b.From a superclass – using super(...)
+	3.Chaining Constructors in the Same Class (using this(...)): You can call another constructor in the same class using the this() keyword. It must be the first line in the constructor.
+	Example:
+	--------
+		public class Person {
+			String name;
+			int age;
+
+			// Constructor 1
+			Person() {
+				this("Unknown", 0); // Calls Constructor 2
+				System.out.println("Default constructor called");
+			}
+
+			// Constructor 2
+			Person(String name, int age) {
+				this.name = name;
+				this.age = age;
+				System.out.println("Parameterized constructor called");
+			}
+		}
+
+	4.Chaining to Superclass Constructor (using super(...)): When a class extends another, you can call the parent class's constructor using super(...). Again, this must be the first line of the child constructor.
+	Example:
+	-------
+		class Animal {
+			Animal(String type) {
+				System.out.println("Animal type: " + type);
+			}
+		}
+
+		class Dog extends Animal {
+			Dog() {
+				super("Dog"); // Calls the constructor in Animal
+				System.out.println("Dog constructor called");
+			}
+		}
+	6.Rules to Remember:
+		a.this() and super() must be the first statement in the constructor.
+		b.You cannot use both this() and super() in the same constructor.
+		c.Constructor chaining helps reduce code duplication.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Questions:
+----------
+1.What is an abstract class in Java?
+	An abstract class in Java is a class that cannot be instantiated on its own and is meant to be extended by other classes. It can contain both abstract methods (without implementation) and concrete methods (with implementation). It’s used to provide a base structure for subclasses.
+	
+2.Can an abstract class have constructors?
+	Yes, an abstract class will have constructor in order to initialize instance variables. Constructor will get called when object of child class is initialized.
+	
+3.Can you create an object of an abstract class? Why or why not?
+	We can not create an object to an abstract class directly, but we can create an object of its child class.Since Abstract class may not have implementation of abstract methods we can not create its objects.
+	
+4.What is the difference between an abstract class and a regular class?
+	An abstract class can have abstract methods (without implementation), while a regular class cannot. Also, an abstract class cannot be instantiated, but a regular class can.
+	
+5.What is the purpose of the abstract keyword in Java?
+	The abstract keyword is used to define abstract classes and methods. It allows you to define methods that must be implemented by subclasses, helping enforce a contract without providing full implementation.
+	
+6.Can an abstract class have non-abstract methods? If yes, why is that allowed?
+	Yes an abstract class can have non-abstract methods which will be called as concrete methods. if the method will be common and fixed to all classes then we  can write non-abstract methods
+	
+7.Can an abstract class implement an interface?
+	Yes, an abstract class can implement an interface. However, it doesn’t have to implement all interface methods. The subclass extending the abstract class must implement any unimplemented interface methods.
+	
+8.If an abstract class contains a method without a body, what should you do in the subclass?
+	we need to write its body in sub class.
+	
+9.What happens if a subclass does not override all abstract methods of its abstract superclass?
+	it will throw compile time error.The subclass must be declared abstract or override all abstract methods.
+	
+10.Can you declare an abstract method as private or static? Why or why not?
+	No we can not declare abstract method as private or static.because an abstract class will not have body implemented. we need to make it available to its child class to overide. private: Can’t be overridden, static: Belongs to class, not instance
+	
+11.Can a class be both abstract and final? Why or why not?
+	No, a class cannot be both abstract and final because abstract means it must be extended, and final means it cannot be extended. They contradict each other.
+	
+12.In what situations would you choose an abstract class over an interface?
+	You choose abstract classes when you want to provide some shared implementation or state.
+	
+13.Can an abstract class extend another abstract class? What happens in that case?
+	Yes, an abstract class can extend another abstract class. It may choose to implement some or none of the abstract methods from the parent. The concrete subclass must implement all remaining abstract methods.
+14.
+abstract class Animal {
+    abstract void makeSound();
+    void eat() {
+        System.out.println("Animal is eating...");
+    }
+}
+
+class Dog extends Animal {
+    void makeSound() {
+        System.out.println("Bark!");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.makeSound();
+        a.eat();
+    }
+}
+
+Bark
+Animal is eating...
+
+15.
+abstract class Shape {
+    abstract void draw();
+}
+
+class Circle extends Shape {
+    // Missing draw method
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Shape s = new Circle();
+        s.draw();
+    }
+}
+
+ this will give compile time error
