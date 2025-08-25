@@ -1,0 +1,242 @@
+What is Java?
+	1.Java is an most popular High level, Object-Oriented Programming language used to build web applications, mobile applications and Enterprise applications.
+	2.Java is an platform independent Language.
+	3.Robust and Secure: Java has strong memory management, exception handling, and a security model.
+	4.Automatic Memory Management: Java uses garbage collection to automatically manage memory
+
+Why Java is Platform Independent?
+	1.Java source code is compiled into bytecode, not machine code.
+	2.Bytecode is universal, not tied to any platform.
+	3.The JVM runs the bytecode, and the JVM is customized for each operating system.
+	4.This is what makes Java programs run anywhere, as long as the platform has the correct JVM installed.
+
+OOP's:
+------
+What is Java Class?
+In java class is the blueprint or a template by which we can create java Objects. A class will contains
+	1.Properties (also called fields or variables)
+	2.Behaviors (also called methods or functions)
+Example:
+--------
+If you are designing a Car
+	1.the class is a blueprint of that car(A car should Have Engine, Wheels, Brakes, color etc..,)
+	2.the object is the actual car built  by this blueprint.
+
+What the Four Main Pillars of OOP in Java?
+	1.Encapsulation
+	2.Inheritance
+	3.polymorphism
+	4.Abstraction
+
+Encapsulation:
+--------------
+	1.Encapsulation is the one of the fundametal feature of Object-Oriented Programming.
+	2.Wrapping Data and metthods to geather as a single unit.
+	3.To control the direct access over the data of object of a class.
+	4.this is to protect the integrity of data and hide the internal implementation of details from outside of the code.
+  Key points about Encapsulation in Java:
+	1.Data Hiding: The variables of a class are hidden from other classes and can only be accessed through methods of their current class. This is typically achieved by declaring variables as private.
+	2.Access through Getters and Setters: To access and update the value of private variables, public methods called getter and setter are provided. This way, you can control how variables are accessed or modified.
+	3.Benefits:
+		a.Protects the internal state of an object.
+		b.Prevents unauthorized access.
+		c.Makes the code more maintainable and flexible.
+		d.Allows changing the internal implementation without affecting outside code.
+  Example:
+  -------
+		public class Person {
+			// Private variables (data hidden)
+			private String name;
+			private int age;
+
+			// Public getter method
+			public String getName() {
+				return name;
+			}
+
+			// Public setter method
+			public void setName(String name) {
+				this.name = name;
+			}
+
+			// Getter for age
+			public int getAge() {
+				return age;
+			}
+
+			// Setter for age with validation
+			public void setAge(int age) {
+				if (age > 0) {
+					this.age = age;
+				}
+			}
+		}
+
+2.Inhertance:
+-------------
+	1.Inheritance is also one of the fundamental concept from Object-Oriented Programming.
+	2.In Inheritance, one class(Child Class) will inherit the properties (fields) and behaviors (methods) of another Class(Parent Class).
+	3.It helps in code re-usability.
+	Example:Animal is the Parent class or super class where as Dog is child class
+	-------
+		class Animal {
+			void eat() {
+				System.out.println("This animal eats food.");
+			}
+		}
+
+		class Dog extends Animal {
+			void bark() {
+				System.out.println("The dog barks.");
+			}
+		}
+	4.Benefits of inheritance:
+		a.Code reuse: Subclasses reuse code from superclasses.
+		b.Method overriding: Subclasses can provide a specific implementation of a method already defined in the superclass.
+		c.Polymorphism: A subclass object can be treated as an instance of its superclass.
+	5.In Java we have different types Inheritance
+		a.Single level inheritance
+		b.Multi level inheritance
+		c.Hierarchial inheritance
+		d.Hybrid inheritance
+	6.Single Inheritance: in this one child class will inheritone Parent class
+	Example:
+		class Animal {
+			void eat() {
+				System.out.println("Animal eats.");
+			}
+		}
+
+		class Dog extends Animal {
+			void bark() {
+				System.out.println("Dog barks.");
+			}
+		}
+	7.Multi Level inheritance: in this child class of a Parent class will be a Parent class to another child class
+	Example:
+		class Animal {
+			void eat() {
+				System.out.println("Animal eats.");
+			}
+		}
+
+		class Dog extends Animal {
+			void bark() {
+				System.out.println("Dog barks.");
+			}
+		}
+
+		class Puppy extends Dog {
+			void weep() {
+				System.out.println("Puppy weeps.");
+			}
+		}
+
+	8.Hierarchial inheritance: in this two or more child classes will inherit a common Parent class
+	Example:
+		class Animal {
+			void eat() {
+				System.out.println("Animal eats.");
+			}
+		}
+
+		class Dog extends Animal {
+			void bark() {
+				System.out.println("Dog barks.");
+			}
+		}
+
+		class Cat extends Animal {
+			void meow() {
+				System.out.println("Cat meows.");
+			}
+		}
+
+	9.Hybrid inheritance: this is the combination of Hierarchial and Multilevel inheritance.
+	10.Multiple Inheritance (with classes): Java does NOT support multiple inheritance with classes to avoid ambiguity (like the Diamond Problem).
+
+3.Polymorphism:
+---------------
+	1.polymorphism is one of the core concepts of object-oriented programming (OOP).
+	2.the term polymorphism means many forms.
+	3.In Java, it refers to the ability of a single function, method, or object to behave in different ways based on the context.
+	4.Different types of polymorphism
+		a.Runtime Polymorphism
+		b.Compiletime Polymorphism
+	5.Runtime Polymorphism: this is also known as method overriding, this can be achieved in inheritance by writing the method of the parent class inside child class.
+	Example:
+	--------
+		class Animal {
+			void sound() {
+				System.out.println("Animal makes a sound");
+			}
+		}
+
+		class Dog extends Animal {
+			void sound() {
+				System.out.println("Dog barks");
+			}
+		}
+
+		public class TestPolymorphism {
+			public static void main(String[] args) {
+				Animal a = new Dog(); // upcasting
+				a.sound(); // Outputs: Dog barks
+			}
+		}
+
+	6.Compiletime Polymorphism: this is also known as method overloading, this can be achieved by writing methods with same name and different number and type of parameters.
+	Example:
+	--------
+		class MathUtils {
+			int add(int a, int b) {
+				return a + b;
+			}
+
+			double add(double a, double b) {
+				return a + b;
+			}
+		}
+
+4.Abstraction:
+--------------
+	1.In java, Abstraction is on of the important feature of Object-Oriented Programming.
+	2.It will be used to hide the implementation of logic and showing only essential things.
+	3.We can achieve abstraction in two ways
+		a.Using Abstract class
+		b.Using Interfaces
+	4.Abstract Class:
+		1.we can use abstract key word to make a class as an abstract class
+		2.we can not create Object of an abstract class
+		3.abstract class will contian abstract methods(Without Body) & concrete methods(With body).
+		4.we will have a constructor to an Abstract class. However, the constructor of an abstract class is called when a subclass is instantiated.
+		Example:
+		--------
+			abstract class Animal {
+				abstract void makeSound();  // abstract method
+
+				void eat() {
+					System.out.println("This animal eats food.");  // concrete method
+				}
+			}
+
+			class Dog extends Animal {
+				void makeSound() {
+					System.out.println("Bark");
+				}
+			}
+	5.Interface:
+		1.Interface will be used to get complete abstraction
+		2.It will have only pure abstract methods.
+		3.We will not have any constructor to an Interface
+		Example:
+		-------
+			interface Animal {
+				void makeSound();  // abstract method
+			}
+
+			class Cat implements Animal {
+				public void makeSound() {
+					System.out.println("Meow");
+				}
+			}
